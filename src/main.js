@@ -2,12 +2,14 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import { auth } from './firebase'
+import { firestorePlugin } from 'vuefire'
+import { auth } from './firebase.js'
 
 Vue.config.productionTip = false
+Vue.use(firestorePlugin);
 
 
-let app
+let app;
 auth.onAuthStateChanged(() => {
   if (!app) {
     app = new Vue({
@@ -16,4 +18,4 @@ auth.onAuthStateChanged(() => {
       render: h => h(App)
     }).$mount('#app')
   }
-});
+})

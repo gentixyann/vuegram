@@ -1,6 +1,7 @@
-import * as firebase from 'firebase/app'
+import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
+import './firebase'
 
 // firebase init - add your own config here
 const firebaseConfig = {
@@ -13,7 +14,6 @@ const firebaseConfig = {
     measurementId: "G-574RVJVMWP"
 }
 firebase.initializeApp(firebaseConfig);
-firebase.analytics();
 
 // utils
 const db = firebase.firestore();
