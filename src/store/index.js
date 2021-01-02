@@ -28,6 +28,9 @@ const store = new Vuex.Store({
     setUserProfile(state, val) {
       state.userProfile = val
     },
+    setPerformingRequest(state, val) {
+      state.performingRequest = val
+    },
     setPosts(state, val) {
       state.posts = val
     }
@@ -87,7 +90,9 @@ const store = new Vuex.Store({
     },
     async likePost(post) {
       const userId = fb.auth.currentUser.uid
+      // const docId = `${userId}/${post.id}`
       const docId = `${userId}_${post.id}`
+      console.log(docId);
 
       // check if user has liked post
       const doc = await fb.likesCollection.doc(docId).get()
@@ -95,7 +100,7 @@ const store = new Vuex.Store({
         return
       }
 
-      // create post
+      // like to post
       await fb.likesCollection.doc(docId).set({
         postId: post.id,
         userId: userId
