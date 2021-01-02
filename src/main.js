@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import { firestorePlugin } from 'vuefire'
 import { auth } from './firebase.js'
+import './assets/scss/app.scss'
 
 Vue.config.productionTip = false
 Vue.use(firestorePlugin);
